@@ -70,59 +70,252 @@
           </aside>
 				</section>
 				<section>
-					<h1>What is going on here?</h1>
-					<img data-src="logo@2x.png" style="background-color: white"></img>
-				</section>
-				<section>
-					<h1>What is going on here?</h1>
-					The server does not matter
-					There are two things here - commits (deltas) and references(labels)
-					References Make Commits Reachable
-					It's all just pointers man
-					Graph theory
+					<ol>
+						<li>Commits as a story</li>
+						<li>A 2-trick pony</li>
+						<li>Rebase FTW!</li>
+						<li>Scenarios</li>
+					</ol>
 				</section>
 				<section>
 					<h1>Commits are AWESOME!</h1>
-					Why are commits awesome - Searchable, forever, available
-					Good commits:
-					Git as a commenting system
-					Every commit should tell a story
 				</section>
 				<section>
+					<img data-src="get_searchable.jpg"/>
+					<h3>Searchable</h3>
+					<h3>Forever *</h3>
+				</section>
+				<section>
+					<img data-src="bad_commit.png"/>
+				</section>
+				<section>
+					<img data-src="good_commit_long.png"/>
+				</section>
+				<section>
+					<img data-src="good_commit_short.png"/>
+				</section>
+				<section data-markdown>
+    			<script type="text/template">
+						## Subject line
+
+						- short
+						- imperative
+						- Present Tense
+    			</script>
+					<aside class="notes">
+						- git, do this to my code base
+						- what this commit does, not what it did
+          </aside>
+				</section>
+				<section data-markdown>
+    			<script type="text/template">
+						## Body
+						- informal
+						- Why?
+						- Explain
+    			</script>
+					<aside class="notes">
+						- Some people compare this to an email to your team
+          </aside>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Commit as a story
+						- Cohesive (atomic)
+						- Single-purpose (directed)
+						- Inherently valuable
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Commit as email to team/future self
+						- What does this do
+						- Why is this commit necessary
+						- Alternate ideas
+						- Consequences & Side Effects
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Commit as comments
+						- Comments that never get out of sync with the code
+						- Time-sensitive documentation, expires naturally
+					</script>
+				</section>
+				<section>
+					"Complete commits" vs "WIP commits"
+					<aside class="notes">
+						- Until you push to the "main" branch, your commits are your business.  Do what you like.
+					</aside>
+				</section>
+				<section>
+					<h1>How To Commit</h1>
+				</section>
+				<section>
+					<h2>What am I doing with my life?</h2>
+					git status
 					git diff
 				</section>
 				<section>
-					The index is actually awesome
+					<h2>The index is actually awesome</h2>
 					git add -p
 				</section>
 				<section>
-					Git stash:
-					Love/hate relationship
+					<h2>Just get this thing out of my way</h2>
+					git stash
+					<aside class="notes">
+						- Love/hate relationship
+					</aside>
 				</section>
 				<section>
-					Great commits - who cares?
-				Finding stuff:
-				grep
-				-S
+					<h1>Great commits<h1>
+					<h2>who cares?</h2>
+					<p>Code ownership</p>
+					<p>Finding stuff</p>
+				</section>
+
+				<section>
+					<section>
+						<h1> Finding Stuff </h1>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### list commits newest to oldest
+							```
+							git log
+							```
+						</script>
+					</section>
+					<section data-markdown>
+							<script type="text/template">
+							### list commits with their diff
+							```
+							git log -p
+							```
+							<img data-src="git_log_p.png"/>
+							</script>
+					</section>
+					<section data-markdown>
+							<script type="text/template">
+							### only show commits whose *messages* contain the string
+							```
+							git log --grep=”commit contents”
+							```
+							<img data-src="git_log_grep.png"/>
+							<aside class="notes">
+								- 24 times
+							</aside>
+							</script>
+
+					</section>
+					<section >
+						<img data-src="git_log_wtf.png"/>
+					</section>
+					<section data-markdown>
+							<script type="text/template">
+							### only show commits whose *code change* contains the string
+
+							```
+							git log -S”diff contents”
+							```
+
+							<img data-src="git_log_S.png"/>
+							</script>
+					</section>
+					<section data-markdown>
+							<script type="text/template">
+							### only show commits for the given path or file
+
+							```
+							git log -- path/or/file
+							```
+							<img data-src="git_log_file.png"/>
+							</script>
+					</section>
+					<section data-markdown>
+							<script type="text/template">
+							### show all the lines of a file and what commit put it there
+							```
+							git blame FILENAME
+							```
+							<img data-src="git_blame.png"/>
+							</script>
+					</section>
+			 </section>
+			 <section>
+				 <img data-src="linus.jpg" style="max-height: 600px"/>
+				 <aside class="notes">
+					 - git was written by kernel developers for kernel developers
+					 - The interface is terrible, but the internals are really good
+					</aside>
+			 </section>
+			 <section>
+				 <h1>What is going on here?</h1>
+				 <img data-src="logo@2x.png" style="background-color: white"></img>
+			 </section>
+			 <section>
+				 <h2>The server does not matter</h2>
+			 </section>
+			 <section data-markdown>
+					 <script type="text/template">
+						 ## git's two tricks
+						 - Deltas (Commits)
+						 - Labels (References)
+					 </script>
+			 </section>
+			 <section>
+				 <h2>It's all just pointers man</h2>
+				 <img data-src="hippie.jpg" />
+				 <p>References Make Commits Reachable</p>
+			 </section>
+			 <section>
+				 <h2>Directed Acyclic Graph</h2>
+				 <img data-src="tinkertoy.jpg" style="max-height: 525px"/>
 			 </section>
 			 <section>
 				 <h1>Rebase rules</h1>
-				 REBASE on branches
-				 MERGE on master
-				 Don't screw-up my git-bisect
-				 Merging is Viral - you hit every conflict that originally occurred and was resolved in those merge commits
-				 Seriously, have you ever tried to undo a git merge?
+				 <p>REBASE on branches</p>
+				 <p>MERGE on master</p>
 			 </section>
 			 <section>
-			 </h1>When not to rebase</h1>
-			 If you're screwing up already-pushed history on a "shared" branch
-			 And pull-rebase will probably work anyway
+				 <h3>Why rebase?</h3>
+				 <ul>
+					<li class="fragment">
+            Linear history
+					</li>
+					<li class="fragment">
+					 	Easier to quit
+				 	</li>
+					<li class="fragment">
+					 	Easier to undo
+				 	</li>
+				 	<li class="fragment">
+					 	Merging is Viral
+				 	</li>
+					<li class="fragment">
+				  	git-bisect
+			   	</li>
+			 	 </ul>
+			 	 <aside class="notes">
+					- telling a story - linear history
+					- Have you ever tried to undo a git merge
+					- you hit every conflict that originally occurred and was resolved in those merge commits
+			 	 </aside>
+			 </section>
+			 <section data-markdown>
+				 <script type="text/template">
+					 ## When not to rebase
+					 - If you're screwing up already-pushed history on a "shared" branch
+					 - And pull-rebase will probably work anyway
+				 </script>
 			 </section>
 			 <section>
-				 <h1>When to merge</h1>
-				 NEVER
-				 j/k - after rebase
-				 Ok, maybe
+				 <h3>When to merge</h3>
+				 <ul>
+					 <li class="fragment">NEVER</li>
+					 <li class="fragment"><span>Just kidding</span><span class="fragment">-> AFTER rebase </span></li>
+					 <li class="fragment"><span>Maybe*</span> <span class="fragment">-> (Long lived branches)</span></li>
+				 </ul>
 			 </section>
 			 <section>
 				 <img data-src="git_merge_heck.png"/>
@@ -130,55 +323,141 @@
 			 <section>
 				 <img data-src="straight_line.png"/>
 			 </section>
-			 <section>
-				 <h2>Scenarios</h2>
-				 I wish I had made this commit somewhere else - cherry pick, or
-				 I'm afraid I'm about to mess things up - BOSS SAVE
-				 What if I forget... - git remembers
-				 I want to edit an earlier change
+			 <section data-markdown>
+				 <script type="text/template">
+					 ### Every morning
+					 ```
+					 git pull --rebase
+					 ```
+					 ### As often as I can stand
+					 ```
+					 git checkout master
+					 git pull --rebase
+					 git checkout mybranch
+					 git rebase master
+					 ```
+					 ### When I'm ready to merge
+					 ```
+					 git checkout master
+					 git pull --rebase
+					 git checkout mybranch
+					 git rebase master
+					 git log
+					 git rebase -i master
+					 git checkout master
+					 git merge mybranch
+					 git push origin master
+					 ```
+				 </script>
+			 </section>
+			 <section data-markdown>
+				 <script type="text/template">
+					 ### STOP
+					 ```
+					 git pull
+					 ```
+					 ### NOW OK
+					 ```
+					 git push --force origin mybranch
+					 ```
+					 <aside class="notes">
+						 - git pull makes things worse!
+						 - Tell story about git push --force fear
+					 </aside>
+				 </script>
 			 </section>
 			 <section>
-				 <h1>Anti-patterns</h1>
-				 1. desperate to push-first
-				 2. Merge bubbles
-				 3. Repeated commit messages
-				 4. Long-lived branches
-			 </section>
-			 <section>
-				 <h1>Advanced</h1>
-				 Cherry-pick
-				 Squash, fixup, auto-squash
-				 rebase same as last time
-			 </section>
+				 <section>
+				   <h2>Scenarios</h2>
+			   </section>
+				 <section data-markdown>
+					 <script type="text/template">
+					 ### I wish I had made this commit somewhere else
+					 ```
+					 git cherry-pick SHA
+					 ```
+					</script>
+				 </section>
+				 <section>
+					 <h3>I'm afraid I'm about to mess things up</h3>
+           <img data-src="boss_save.jpg"/>
+					 <div data-markdown >
+						 <script type="text/template">
+							 ```
+							 git checkout -b savepoint
+							 ```
+						 </script>
+				 </section>
+				 <section data-markdown>
+					 <script type="text/template">
+					 ### What if I forget
+					 ```
+					 git reflog
+					 ```
+					 <aside class="notes">
+						 - Much like pepperidge farms...
+					 </aside>
+					</script>
+				 </section>
+				 <section data-markdown>
+					<script type="text/template">
+					### I want to edit an earlier change
 
+					```
+					git commit -am "FIXUP on foo"
+					git rebase -i SHA^
+					```
 
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+					reorder and use fixup
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
+					OR
+					```
+					git rebase -i SHA^
+					```
+
+					edit previous commit
+				 </script>
 				</section>
+			 </section>
+			 <section data-markdown>
+				 <script type="text/template">
+					 ### Anti-patterns
 
+					 1. Desperate to push-first
+					 1. Merge bubbles
+					 1. Repeated commit messages
+					 1. Long-lived branches
+			   </script>
+			 </section>
+			 <section>
+				 <section>
+				 	<h1>Advanced</h1>
+				 </section>
+				 <section data-markdown>
+					 ### Autosquash
+					 ```
+					 git commit --fixup bbb2222
+					 git commit --squash bbb2222
+					 git rebase -i --autosquash master
+					 ```
 
+					 ```
+					 git config --global rebase.autosquash true
+					 ```
 
+					 ```
+					 git commit --fixup :/second
+					 ```
 
+				 </section>
+				 <section data-markdown>
+					 ## Don't make me repeat myself
 
+					 ```
+					 git rerere
+					 ```
+			   </section>
+			 </section>
 
 			</div>
 
